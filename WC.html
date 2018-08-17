@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>装库 | 最懂家居行业的综合服务商</title>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/three.min.js"></script>
+<script type="text/javascript">
+var case_id = "";
+var c_long = "0";
+var my_lat = "0";
+</script>
+<link rel="stylesheet" href="css/photo-sphere-viewer.min.css">
+<script src="js/D.min.js"></script> 
+<script src="js/doT.min.js"></script> 
+<script src="js/uevent.min.js"></script> 
+<script src="js/CanvasRenderer.js"></script>
+<script src="js/Projector.js"></script> 
+<script src="js/photo-sphere-viewer.js"></script> 
+</head>
+<body style="width:100%; max-width:none;margin: 0;">
+    <div class="design_main_body" id="design_main_area">
+    <div id="main_design" >
+    <div id="3d_area" style=" text-align:center; width:100%; height:100%; position:relative; color:#999;"></div>
+  <div class="category_list" style="display:none; position:absolute; bottom:0px; z-index:99999999;">
+  </div>
+</div>
+    </div>
+
+<script language="javascript" type="text/javascript">
+
+$(function(){
+
+	 $(window).bind( 'orientationchange', function(e){
+		orient();
+		});
+		if (window.orientation == 90 || window.orientation == -90) {
+	//ipad、iphone竖屏；Andriod横屏
+	   
+	   $(".nav-top").hide();
+		 $("#pro_list").hide();
+		 $(".home_footer").hide();
+		 $("#friendship_content").hide();
+		 /*document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		  WeixinJSBridge.call('hideToolbar');
+		});*/
+	}
+	else if (window.orientation == 0 || window.orientation == 180) {
+	//ipad、iphone横屏；Andriod竖屏
+	     
+	   $(".nav-top").show();
+	   $("#pro_list").show();
+	   $(".home_footer").show();
+	   $("#friendship_content").show();
+	   /*document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		  WeixinJSBridge.call('showToolbar');
+		});*/
+	}
+	var d_width = $(window).width();
+	var w_height = $(window).height();
+	web_height = w_height-88;
+	var d_height = d_width/1.33;  
+    $("#d_area").height(d_height);
+	$(".category_list").height(w_height-d_height);
+});
+function orient() {
+	var width = $("#d_area").width();
+	var height = width/1.33;
+	if (window.orientation == 90 || window.orientation == -90) {
+	//ipad、iphone竖屏；Andriod横屏
+	   
+	   $(".nav-top").hide();
+		 $("#pro_list").hide();
+		 $(".home_footer").hide();
+		 $("#friendship_content").hide();
+	}
+	else if (window.orientation == 0 || window.orientation == 180) {
+	//ipad、iphone横屏；Andriod竖屏
+		 $(".nav-top").show();
+	   $("#pro_list").show();
+	   $(".home_footer").show();
+	   $("#friendship_content").show();
+	   //WeixinJSBridge.call('showToolbar');
+	   $(".nav-top").show();
+	   $("#pro_list").show();
+	   $(".home_footer").show();
+	   $("#friendship_content").show();
+	   //WeixinJSBridge.call('showToolbar');
+	}
+	$("#d_area").height(height);
+	var w_height = $(window).height();
+	//$(".category_list").height(w_height-height-42);
+	$("#img_loading").height(height);
+	$("#img_loading").css("line-height",height/12);
+	$(".category_list").height(w_height-height-88);
+}
+$(window).resize(function() {
+	
+    orient();
+});
+</script>
+
+
+<script type="text/javascript">
+var jindu = 0;
+var clear=80
+$(function(){
+	var sUserAgent = navigator.userAgent.toLowerCase();
+	var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+	var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+	var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+	var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+	var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+	var bIsAndroid = sUserAgent.match(/android/i) == "android";
+	var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+	var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+	if(bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+		clear=60
+	}
+   var PSV;
+	make_3d('1');
+
+});
+
+function make_3d(final_img)
+{
+	
+	 PSV = new PhotoSphereViewer({
+		//  panorama:  'https://zk-backend.oss-cn-beijing.aliyuncs.com/test/720/KT.jpg?x-oss-process=image/quality,q_80',
+	  panorama:  'https://zk-backend.oss-cn-beijing.aliyuncs.com/test/720/ET.jpg?x-oss-process=image/quality,q_'+clear,
+	  container: '3d_area',
+	  loading_img: 'http://www.zizaojia.cn/themes/mobile/style/loading.gif',
+	  time_anim: false,
+	  caption: '',
+		default_long:-0.8,    // 初始经度位置
+				default_lat: 0,  // 初始维度位置
+	  default_fov: 100,
+	  default_lat: 0,
+	  move_speed:'3',
+	  mousewheel: true,
+	  size: {
+	   width: '100%',
+	   height: web_height+90+'px'
+	// height:'100%'
+	  },
+	  navbar:false,
+	  markers: [
+		{
+		  id: '21',
+		  longitude: 8.8843997074154934,
+		  latitude: 0.02250782852668931,
+		  html: '<a href="KT.html" class="pin"><div class="name">客厅</div><img src="img/pin3.png" width="40"></a>',
+		  anchor: 'center left',
+		  style: {
+			
+			color: 'white',
+			fontSize: '12px',
+			fontFamily: 'Microsoft YaHei',
+			textAlign: 'center'
+		  }
+		},
+
+
+
+	  ]
+	});
+}
+</script>
+
+</body>
+</html>
